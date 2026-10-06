@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "title": "Piromania | Fantezii explozive",
+    "description": "Spectacole pirotehnice pentru nunți, evenimente corporate și orașe. Echipă autorizată, peste 19 ani de experiență."
+  },
+  "nav": {
+    "label": "Navigație principală",
+    "about": "Despre noi",
+    "services": "Servicii",
+    "shows": "Spectacole",
+    "packages": "Pachete",
+    "menu": "Meniu",
+    "close": "Închide",
+    "quote": "Cere ofertă",
+    "language": "Limba",
+    "home": "Piromania, pagina principală",
+    "openMenu": "Deschide meniul",
+    "closeMenu": "Închide meniul",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Fantezii explozive",
+    "pitch": "Spectacole pirotehnice pentru nunți, evenimente corporate și orașe, create de o echipă autorizată cu peste 19 ani de experiență.",
+    "packages": "Vezi pachetele",
+    "videoLabel": "Artificii aurii pe cerul nopții"
+  },
+  "about": {
+    "title": "Despre noi",
+    "statement": "Pentru noi, artificiile sunt o artă. De peste 19 ani creăm spectacole pirotehnice pentru nunți, petreceri și evenimente de anvergură, la standarde occidentale.",
+    "facts": [
+      {
+        "title": "Peste 19 ani",
+        "text": "De experiență în spectacole de interior, de exterior și de sol."
+      },
+      {
+        "title": "Echipă autorizată",
+        "text": "Pirotehniști autorizați, de la montaj până la ultimul foc."
+      },
+      {
+        "title": "Pe muzică",
+        "text": "Spectacole piromuzicale, cu focurile sincronizate pe melodia aleasă."
+      },
+      {
+        "title": "Fără fum, în interior",
+        "text": "Artificii de interior fără fum, pentru sală, tort sau primul dans."
+      }
+    ]
+  },
+  "services": {
+    "title": "Servicii",
+    "intro": "Patru feluri de a aprinde un eveniment.",
+    "items": {
+      "exterior": {
+        "title": "Artificii de exterior",
+        "text": "Spectacole de lumină pe cer, între 20 și 100 de metri înălțime. Pentru nunți, botezuri, aniversări și evenimente de anvergură."
+      },
+      "interior": {
+        "title": "Artificii de interior",
+        "text": "Fântâni de scântei fără fum pentru sală, tort sau primul dans. Culoare și surpriză, fără să ieși din petrecere."
+      },
+      "ground": {
+        "title": "Artificii de sol",
+        "text": "Jerbe de scântei, cascade pirotehnice și inimi luminoase pentru scenă, intrarea mirilor sau momente cu temă."
+      },
+      "effects": {
+        "title": "Efecte speciale",
+        "text": "Fum greu, flăcări, confetti, bule de săpun și lumini, pentru evenimente, scenă, teatru și film."
+      }
+    }
+  },
+  "shows": {
+    "title": "Spectacole",
+    "intro": "Pentru fiecare tip de eveniment.",
+    "items": {
+      "weddings": {
+        "title": "Nunți și botezuri",
+        "text": "Intrarea mirilor, primul dans, tortul și finalul serii."
+      },
+      "corporate": {
+        "title": "Evenimente corporate",
+        "text": "Lansări, gale și petreceri de firmă, cu fiecare moment pus la punct."
+      },
+      "cities": {
+        "title": "Orașe și festivaluri",
+        "text": "Revelion, zilele orașului și festivaluri, pe cer deschis."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Prețuri clare",
+    "intro": "Pachete fixe pentru cele mai cerute spectacole. Prețurile nu includ TVA și taxele locale.",
+    "from": "de la",
+    "all": "Toate pachetele și prețurile"
+  },
+  "partners": {
+    "title": "Parteneri",
+    "testimonialsTitle": "Ce spun clienții",
+    "testimonials": [
+      {
+        "quote": "Am rămas cu amintiri foarte frumoase. Recomand oricui să apeleze la serviciile voastre.",
+        "author": "Mariana P., București"
+      },
+      {
+        "quote": "Am avut un eveniment plin de viață și de culoare datorită artificiilor Piromania.",
+        "author": "Bogdan L., București"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Cere ofertă",
+    "intro": "Spune-ne data, locul și tipul evenimentului, iar noi revenim cu o propunere și un preț.",
+    "direct": "Sau sună-ne direct",
+    "optional": "opțional",
+    "fields": {
+      "name": "Nume",
+      "phone": "Telefon",
+      "email": "Email",
+      "eventType": "Tipul evenimentului",
+      "eventTypePlaceholder": "Alege",
+      "date": "Data evenimentului",
+      "location": "Localitate",
+      "message": "Detalii despre eveniment"
+    },
+    "eventTypes": {
+      "wedding": "Nuntă",
+      "baptism": "Botez",
+      "birthday": "Aniversare",
+      "corporate": "Eveniment corporate",
+      "city": "Oraș sau festival",
+      "other": "Altul"
+    },
+    "submit": "Trimite cererea",
+    "sending": "Se trimite…",
+    "success": "Mulțumim! Am primit cererea ta și revenim în curând.",
+    "errors": {
+      "required": "Completează acest câmp.",
+      "phone": "Introdu un număr de telefon valid.",
+      "email": "Introdu o adresă de email validă.",
+      "server": "Nu am putut trimite cererea. Sună-ne la 0722 380 636 sau scrie-ne la office@piromania.ro."
+    }
+  },
+  "footer": {
+    "rights": "Toate drepturile rezervate."
+  },
+  "packagesPage": {
+    "metaTitle": "Pachete și prețuri | Piromania",
+    "metaDescription": "Prețuri pentru spectacole de artificii de exterior, preț pe minut și artificii de interior.",
+    "title": "Pachete și prețuri",
+    "intro": "Prețuri fixe pentru cele mai cerute spectacole. Pentru orice altceva, construim spectacolul împreună.",
+    "vat": "Prețurile nu includ TVA și taxele stabilite de consiliile locale.",
+    "exterior": "Spectacole de exterior",
+    "perMinute": "Preț pe minut",
+    "perMinuteIntro": "Pentru un spectacol cu durata aleasă de tine.",
+    "perMinuteColumns": {
+      "price": "Preț pe minut",
+      "shots": "Focuri pe minut",
+      "height": "Înălțime maximă"
+    },
+    "about": "aprox.",
+    "metres": "m",
+    "interior": "Artificii de interior",
+    "ctaTitle": "Nu știi ce pachet ți se potrivește?",
+    "ctaText": "Spune-ne despre eveniment și îți recomandăm spectacolul potrivit."
+  }
+}

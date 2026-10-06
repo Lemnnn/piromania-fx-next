@@ -1,0 +1,151 @@
+/*
+ * StaggeredMenu, adapted from React Bits (reactbits.dev/components/staggered-menu)
+ * to the Piromania tokens: square corners, display type, brand flame accent.
+ */
+
+.sm-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.5rem;
+  padding-inline: 0.25rem;
+  color: var(--foreground);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.sm-toggle-textWrap {
+  position: relative;
+  display: inline-block;
+  height: 1.3em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sm-toggle-textInner {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+/* 1.3em lines leave room for diacritics (Î in "Închide") inside the clip. */
+.sm-toggle-line {
+  display: block;
+  height: 1.3em;
+  line-height: 1.3;
+}
+
+.sm-icon {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.sm-icon-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+}
+
+.sm-icon-line-v {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* Overlay lives in <body>, under the header (z-30) so the toggle stays on top. */
+.sm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.sm-layers,
+.sm-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: clamp(340px, 42vw, 620px);
+}
+
+.sm-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.sm-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 7.5rem 2.5rem 2.5rem;
+  overflow-y: auto;
+  background: var(--background);
+  opacity: 0;
+  pointer-events: auto;
+}
+
+.sm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sm-item-wrap {
+  position: relative;
+  overflow: hidden;
+  line-height: 0.9;
+}
+
+.sm-item {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(3.25rem, 5.5vw, 5.25rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--foreground);
+  transition: color 200ms var(--ease-out);
+}
+
+.sm-item:hover,
+.sm-item[aria-current="page"] {
+  color: var(--flame);
+}
+
+.sm-item-label {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+
+.sm-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+@media (max-width: 1023px) {
+  .sm-layers,
+  .sm-panel {
+    width: 100%;
+  }
+
+  .sm-panel {
+    padding: 6.5rem 1rem 2rem;
+  }
+}

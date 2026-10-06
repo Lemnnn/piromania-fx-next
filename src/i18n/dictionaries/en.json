@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "title": "Piromania | Explosive fantasies",
+    "description": "Pyrotechnic shows for weddings, corporate events and cities. A licensed team with over 19 years of experience."
+  },
+  "nav": {
+    "label": "Main navigation",
+    "about": "About",
+    "services": "Services",
+    "shows": "Shows",
+    "packages": "Packages",
+    "menu": "Menu",
+    "close": "Close",
+    "quote": "Get a quote",
+    "language": "Language",
+    "home": "Piromania home",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Explosive fantasies",
+    "pitch": "Pyrotechnic shows for weddings, corporate events and cities, created by a licensed team with over 19 years of experience.",
+    "packages": "See packages",
+    "videoLabel": "Golden fireworks in the night sky"
+  },
+  "about": {
+    "title": "About us",
+    "statement": "To us, fireworks are an art. For over 19 years we have created pyrotechnic shows for weddings, parties and large-scale events, to Western standards.",
+    "facts": [
+      {
+        "title": "Over 19 years",
+        "text": "Of experience in indoor, outdoor and ground shows."
+      },
+      {
+        "title": "Licensed team",
+        "text": "Licensed pyrotechnicians, from setup to the very last shot."
+      },
+      {
+        "title": "Set to music",
+        "text": "Pyromusical shows, with every shot synced to the track you choose."
+      },
+      {
+        "title": "Smokeless, indoors",
+        "text": "Smokeless indoor fireworks for the venue, the cake or the first dance."
+      }
+    ]
+  },
+  "services": {
+    "title": "Services",
+    "intro": "Four ways to light up an event.",
+    "items": {
+      "exterior": {
+        "title": "Outdoor fireworks",
+        "text": "Light shows in the sky, from 20 to 100 metres high. For weddings, christenings, birthdays and large-scale events."
+      },
+      "interior": {
+        "title": "Indoor fireworks",
+        "text": "Smokeless spark fountains for the venue, the cake or the first dance. Colour and surprise without leaving the party."
+      },
+      "ground": {
+        "title": "Ground fireworks",
+        "text": "Spark fountains, pyrotechnic waterfalls and glowing hearts for the stage, the couple's entrance or themed moments."
+      },
+      "effects": {
+        "title": "Special effects",
+        "text": "Heavy smoke, flames, confetti, soap bubbles and lights for events, stage, theatre and film."
+      }
+    }
+  },
+  "shows": {
+    "title": "Shows",
+    "intro": "For every kind of event.",
+    "items": {
+      "weddings": {
+        "title": "Weddings and christenings",
+        "text": "The couple's entrance, the first dance, the cake and the end of the night."
+      },
+      "corporate": {
+        "title": "Corporate events",
+        "text": "Launches, galas and company parties, with every moment planned."
+      },
+      "cities": {
+        "title": "Cities and festivals",
+        "text": "New Year's Eve, city days and festivals, in the open sky."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Clear prices",
+    "intro": "Fixed packages for the most requested shows. Prices exclude VAT and local fees.",
+    "from": "from",
+    "all": "All packages and prices"
+  },
+  "partners": {
+    "title": "Partners",
+    "testimonialsTitle": "What clients say",
+    "testimonials": [
+      {
+        "quote": "We were left with lovely memories. I'd recommend your services to anyone.",
+        "author": "Mariana P., Bucharest"
+      },
+      {
+        "quote": "Our event was full of life and colour thanks to Piromania's fireworks.",
+        "author": "Bogdan L., Bucharest"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get a quote",
+    "intro": "Tell us the date, the place and the kind of event, and we'll come back with a proposal and a price.",
+    "direct": "Or call us directly",
+    "optional": "optional",
+    "fields": {
+      "name": "Name",
+      "phone": "Phone",
+      "email": "Email",
+      "eventType": "Type of event",
+      "eventTypePlaceholder": "Choose",
+      "date": "Event date",
+      "location": "Town or city",
+      "message": "Event details"
+    },
+    "eventTypes": {
+      "wedding": "Wedding",
+      "baptism": "Christening",
+      "birthday": "Birthday",
+      "corporate": "Corporate event",
+      "city": "City or festival",
+      "other": "Other"
+    },
+    "submit": "Send request",
+    "sending": "Sending…",
+    "success": "Thank you! We've received your request and will be in touch soon.",
+    "errors": {
+      "required": "Fill in this field.",
+      "phone": "Enter a valid phone number.",
+      "email": "Enter a valid email address.",
+      "server": "We couldn't send your request. Call us on 0722 380 636 or email office@piromania.ro."
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  },
+  "packagesPage": {
+    "metaTitle": "Packages and prices | Piromania",
+    "metaDescription": "Prices for outdoor fireworks shows, per-minute rates and indoor fireworks.",
+    "title": "Packages and prices",
+    "intro": "Fixed prices for the most requested shows. For anything else, we design the show together.",
+    "vat": "Prices exclude VAT and fees set by local councils.",
+    "exterior": "Outdoor shows",
+    "perMinute": "Price per minute",
+    "perMinuteIntro": "For a show that runs as long as you want.",
+    "perMinuteColumns": {
+      "price": "Price per minute",
+      "shots": "Shots per minute",
+      "height": "Maximum height"
+    },
+    "about": "approx.",
+    "metres": "m",
+    "interior": "Indoor fireworks",
+    "ctaTitle": "Not sure which package fits?",
+    "ctaText": "Tell us about your event and we'll recommend the right show."
+  }
+}

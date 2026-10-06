@@ -1,19 +1,30 @@
-import { Button } from "@/components/ui/button"
+import { notFound } from "next/navigation"
 
-export default function Page() {
+import { ContactSection } from "@/features/contact/components/contact-section"
+import { About } from "@/features/home/components/about"
+import { Hero } from "@/features/home/components/hero"
+import { Partners } from "@/features/home/components/partners"
+import { PricingPreview } from "@/features/home/components/pricing-preview"
+import { Services } from "@/features/home/components/services"
+import { Shows } from "@/features/home/components/shows"
+import { hasLocale } from "@/i18n/config"
+import { getDictionary } from "@/i18n/get-dictionary"
+
+export default async function Page({ params }: PageProps<"/[lang]">) {
+  const { lang } = await params
+  if (!hasLocale(lang)) notFound()
+
+  const dict = await getDictionary(lang)
+
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
-    </div>
+    <main>
+      <Hero lang={lang} dict={dict.hero} quoteLabel={dict.nav.quote} />
+      <About dict={dict.about} />
+      <Services dict={dict.services} />
+      <Shows dict={dict.shows} />
+      <PricingPreview lang={lang} dict={dict.pricing} />
+      <Partners dict={dict.partners} />
+      <ContactSection dict={dict.contact} />
+    </main>
   )
 }
