@@ -102,7 +102,7 @@
  * Home intro. An inline script in the root layout marks <html data-intro="pending">
  * before first paint on every full load of the home page. The hero
  * then takes over with GSAP. If JavaScript never runs, the failsafe reveals
- * everything after a few seconds.
+ * everything after 3 seconds.
  */
 @keyframes intro-failsafe {
   to {
@@ -114,12 +114,90 @@
 
 [data-intro="pending"] [data-intro-hide] {
   opacity: 0;
-  animation: intro-failsafe 0s 6s forwards;
+  animation: intro-failsafe 0s 3s forwards;
 }
 
 [data-intro="pending"] [data-intro-frame] {
   clip-path: inset(50%);
-  animation: intro-failsafe 0s 6s forwards;
+  animation: intro-failsafe 0s 3s forwards;
+}
+
+/* Sections focused by in-page links (lib/smooth-scroll) get no focus ring. */
+section[tabindex="-1"]:focus {
+  outline: none;
+}
+
+/*
+ * Site header: two fixed layers (components/layout/site-header) that move as
+ * one. Solid once content scrolls underneath, slides away while scrolling
+ * down, and comes back when a keyboard user tabs into it.
+ */
+[data-header-layer] {
+  transition:
+    translate 300ms var(--ease-out),
+    background-color 300ms var(--ease-out),
+    border-color 300ms var(--ease-out);
+}
+
+[data-site-header][data-hidden]:not(:focus-within) [data-header-layer] {
+  translate: 0 -100%;
+}
+
+[data-site-header][data-solid] [data-header-bg] {
+  background-color: color-mix(in oklab, var(--background) 95%, transparent);
+  border-color: color-mix(in oklab, var(--foreground) 10%, transparent);
+}
+
+[data-header-quote] {
+  transition:
+    opacity 300ms var(--ease-out),
+    visibility 300ms;
+}
+
+[data-site-header][data-home]:not([data-solid]) [data-header-quote] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/*
+ * Page transitions (components/layout/page-transition, React ViewTransition).
+ * The old page dims and lifts away; the new one wipes up over it. Header and
+ * footer are part of the root snapshot, which swaps without animating, so
+ * they don't flash. Keep the wipe length in step with PAGE_TRANSITION_MS in
+ * lib/smooth-scroll.
+ */
+::view-transition {
+  /* Clicks during the wipe reach the live page instead of being swallowed. */
+  pointer-events: none;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+::view-transition-old(.page-exit) {
+  animation: 450ms var(--ease-in-out) both page-out;
+}
+
+::view-transition-new(.page-enter) {
+  animation: 700ms var(--ease-in-out) both page-in;
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0.35;
+    translate: 0 -48px;
+  }
+}
+
+@keyframes page-in {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
 }
 
 /* Partner names: two identical lists, so shifting by half loops seamlessly. */
@@ -129,10 +207,41 @@
   }
 }
 
+/* Runs only while on screen and not paused (see components/shared/marquee). */
 .marquee {
-  animation: marquee 45s linear infinite;
+  animation: marquee 45s linear infinite paused;
 }
 
-.marquee:hover {
-  animation-play-state: paused;
+.marquee[data-running]:not(:hover, :focus-within) {
+  animation-play-state: running;
+}
+
+/* Page-width wrapper shared by every section. */
+@utility container-page {
+  margin-inline: auto;
+  max-width: 1600px;
+  padding-inline: --spacing(4);
+  @variant md {
+    padding-inline: --spacing(8);
+  }
+}
+
+/* The big section titles (Services, Shows, Contact). */
+@utility heading-section {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 9vw, 9rem);
+  line-height: 0.9;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/* Underlined text link that warms to flame on hover. */
+@utility link-underline {
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(in oklab, var(--foreground) 40%, transparent);
+  text-underline-offset: 6px;
+  transition: text-decoration-color 200ms;
+  &:hover {
+    text-decoration-color: var(--flame);
+  }
 }

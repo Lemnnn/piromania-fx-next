@@ -1,13 +1,9 @@
 "use client"
 
-import { useGSAP } from "@gsap/react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useRef } from "react"
 
 import type { Dictionary } from "@/i18n/get-dictionary"
-
-gsap.registerPlugin(useGSAP, ScrollTrigger)
+import { gsap, useGSAP } from "@/lib/gsap"
 
 export function About({ dict }: { dict: Dictionary["about"] }) {
   const root = useRef<HTMLElement>(null)
@@ -40,7 +36,7 @@ export function About({ dict }: { dict: Dictionary["about"] }) {
       id="about"
       ref={root}
       aria-labelledby="about-title"
-      className="mx-auto max-w-[1600px] scroll-mt-0 px-4 py-28 md:px-8 md:py-44"
+      className="container-page py-28 md:py-44"
     >
       <h2 id="about-title" className="sr-only">
         {dict.title}

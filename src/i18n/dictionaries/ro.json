@@ -16,13 +16,23 @@
     "home": "Piromania, pagina principală",
     "openMenu": "Deschide meniul",
     "closeMenu": "Închide meniul",
-    "contact": "Contact"
+    "contact": "Contact",
+    "skip": "Sari la conținut"
   },
   "hero": {
     "title": "Fantezii explozive",
     "pitch": "Spectacole pirotehnice pentru nunți, evenimente corporate și orașe, create de o echipă autorizată cu peste 19 ani de experiență.",
-    "packages": "Vezi pachetele",
-    "videoLabel": "Artificii aurii pe cerul nopții"
+    "videoLabel": "Montaj cu artificii pe cerul nopții",
+    "pauseVideo": "Oprește video",
+    "playVideo": "Pornește video",
+    "tag": "Spectacole pirotehnice",
+    "clips": {
+      "exterior": "Artificii de exterior",
+      "weddings": "Nunți",
+      "ground": "Artificii de sol",
+      "cities": "Orașe",
+      "effects": "Efecte speciale"
+    }
   },
   "about": {
     "title": "Despre noi",
@@ -118,6 +128,7 @@
       "eventType": "Tipul evenimentului",
       "eventTypePlaceholder": "Alege",
       "date": "Data evenimentului",
+      "datePlaceholder": "Alege data",
       "location": "Localitate",
       "message": "Detalii despre eveniment"
     },
@@ -136,11 +147,16 @@
       "required": "Completează acest câmp.",
       "phone": "Introdu un număr de telefon valid.",
       "email": "Introdu o adresă de email validă.",
-      "server": "Nu am putut trimite cererea. Sună-ne la 0722 380 636 sau scrie-ne la office@piromania.ro."
-    }
+      "server": "Nu am putut trimite cererea. Sună-ne la {phone} sau scrie-ne la {email}.",
+      "date": "Alege o dată din viitor.",
+      "rateLimit": "Ai trimis deja mai multe cereri. Încearcă din nou peste câteva minute sau sună-ne la {phone}."
+    },
+    "privacyNotice": "Folosim datele tale doar ca să-ți răspundem la cerere. Detalii în {link}.",
+    "privacyLink": "politica de confidențialitate"
   },
   "footer": {
-    "rights": "Toate drepturile rezervate."
+    "rights": "Toate drepturile rezervate.",
+    "privacy": "Politica de confidențialitate"
   },
   "packagesPage": {
     "metaTitle": "Pachete și prețuri | Piromania",
@@ -161,5 +177,50 @@
     "interior": "Artificii de interior",
     "ctaTitle": "Nu știi ce pachet ți se potrivește?",
     "ctaText": "Spune-ne despre eveniment și îți recomandăm spectacolul potrivit."
+  },
+  "privacy": {
+    "metaTitle": "Politica de confidențialitate | Piromania",
+    "metaDescription": "Ce date colectăm prin formularul de ofertă, de ce și cum îți exerciți drepturile.",
+    "title": "Politica de confidențialitate",
+    "draft": "Ciornă: acest text trebuie verificat de un jurist înainte de lansare.",
+    "updated": "Ultima actualizare: octombrie 2026",
+    "sections": [
+      {
+        "title": "Cine suntem",
+        "paragraphs": [
+          "Piromania International SRL este operatorul datelor tale. Ne poți contacta la office@piromania.ro sau la 0722 380 636. [De completat: CUI, nr. Registrul Comerțului, sediul social.]"
+        ]
+      },
+      {
+        "title": "Ce date colectăm",
+        "paragraphs": [
+          "Doar ce ne trimiți prin formularul de ofertă: numele, telefonul, emailul (opțional), tipul, data și localitatea evenimentului și detaliile pe care le adaugi. Nu folosim cookie-uri de analiză sau publicitate. Păstrăm doar un cookie care reține limba aleasă."
+        ]
+      },
+      {
+        "title": "De ce le folosim",
+        "paragraphs": [
+          "Ca să-ți răspundem la cerere și să-ți trimitem o ofertă. Temeiul legal este demersul făcut la cererea ta înainte de încheierea unui contract (art. 6 alin. 1 lit. b din GDPR). Nu trimitem newslettere și nu vindem datele."
+        ]
+      },
+      {
+        "title": "Cine are acces",
+        "paragraphs": [
+          "Echipa Piromania și furnizorii care ne ajută să livrăm mesajul: Resend (trimiterea emailului) și Vercel (găzduirea site-ului). Aceștia pot prelucra date în afara UE, pe baza clauzelor contractuale standard aprobate de Comisia Europeană."
+        ]
+      },
+      {
+        "title": "Cât timp le păstrăm",
+        "paragraphs": [
+          "Cât durează discuția despre ofertă și, dacă devii client, pe durata contractului și a obligațiilor legale. Cererile care nu devin contract le ștergem după cel mult 12 luni. [De confirmat cu clientul.]"
+        ]
+      },
+      {
+        "title": "Drepturile tale",
+        "paragraphs": [
+          "Ai dreptul să ceri acces la date, rectificarea sau ștergerea lor, restricționarea prelucrării, portabilitatea și să te opui prelucrării. Scrie-ne la office@piromania.ro. Poți depune și o plângere la Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), dataprotection.ro."
+        ]
+      }
+    ]
   }
 }

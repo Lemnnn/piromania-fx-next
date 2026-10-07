@@ -1,9 +1,12 @@
 import Image from "next/image"
+import Link from "next/link"
 
+import { ContactLinks } from "@/components/shared/contact-links"
+import { CurrentYear } from "@/components/shared/current-year"
 import type { Locale } from "@/i18n/config"
 import type { Dictionary } from "@/i18n/get-dictionary"
-import { SectionLink } from "@/lib/smooth-scroll"
 import { localeHref, siteConfig } from "@/lib/site-config"
+import { SectionLink } from "@/lib/smooth-scroll"
 
 type SiteFooterProps = {
   lang: Locale
@@ -11,25 +14,12 @@ type SiteFooterProps = {
 }
 
 export function SiteFooter({ lang, dict }: SiteFooterProps) {
-  const { contact } = siteConfig
-
   return (
     <footer className="overflow-hidden border-t border-foreground/15">
-      <div className="mx-auto flex max-w-[1600px] flex-col gap-16 px-4 pt-16 md:px-8 md:pt-24">
+      <div className="container-page flex flex-col gap-16 pt-16 md:pt-24">
         <div className="grid gap-10 md:grid-cols-3">
           <div className="flex flex-col gap-2">
-            <a
-              href={contact.phoneHref}
-              className="w-fit font-display text-4xl leading-none font-bold transition-colors duration-200 hover:text-flame"
-            >
-              {contact.phone}
-            </a>
-            <a
-              href={`mailto:${contact.email}`}
-              className="w-fit text-lg underline decoration-foreground/40 underline-offset-[6px] transition-colors duration-200 hover:decoration-flame"
-            >
-              {contact.email}
-            </a>
+            <ContactLinks phoneClassName="text-4xl" />
           </div>
 
           <nav aria-label={dict.nav.label}>
@@ -55,11 +45,20 @@ export function SiteFooter({ lang, dict }: SiteFooterProps) {
             </ul>
           </nav>
 
-          <p className="text-foreground/60 md:text-right">
-            © {new Date().getFullYear()} {siteConfig.company}
-            <br />
-            {dict.footer.rights}
-          </p>
+          <div className="flex flex-col gap-3 text-foreground/60 md:items-end md:text-right">
+            <p>
+              © <CurrentYear buildYear={new Date().getFullYear()} />{" "}
+              {siteConfig.company}
+              <br />
+              {dict.footer.rights}
+            </p>
+            <Link
+              href={localeHref(lang, siteConfig.privacyHref)}
+              className="w-fit underline-offset-4 transition-colors duration-200 hover:text-foreground hover:underline"
+            >
+              {dict.footer.privacy}
+            </Link>
+          </div>
         </div>
 
         {/* The brand wordmark as the page's closing image; the company name

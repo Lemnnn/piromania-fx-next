@@ -39,7 +39,7 @@ The marketing and showcase site for Piromania International SRL ("Piromania – 
 
 - Next.js 16 App Router, shadcn/ui (Base UI), Tailwind v4, GSAP, bilingual RO (default) + EN under `/[lang]`
 - Prices above come from the current site (piromania.ro/oferta-artificii) and must be confirmed with the client before launch
-- Two pages per locale: a one-page home (`#about`, `#services`, `#shows`, `#contact` plus pricing preview and partners) and `/packages` with full prices. The menu's section links scroll within the home page
+- Pages per locale: a one-page home (`#about`, `#services`, `#shows`, `#contact` plus pricing preview and partners), `/packages` with full prices, and `/privacy` (draft text, needs legal review and the company's registration details before launch). The menu's section links scroll within the home page
 - Quote form emails office@piromania.ro through Resend (`RESEND_API_KEY`, `QUOTE_FROM_EMAIL`, `QUOTE_TO_EMAIL`, see `.env.example`). Without a key, development logs requests and production shows the phone/email fallback
 - Undecided: CMS (currently typed data files), video hosting
 
@@ -65,4 +65,4 @@ The marketing and showcase site for Piromania International SRL ("Piromania – 
 
 ## Accessibility & Inclusion
 
-WCAG 2.2 AA. Flashing content must stay below seizure thresholds (no more than 3 flashes per second). The home intro and hero video play for every visitor, including those with `prefers-reduced-motion` (a deliberate client decision, matching the No Art reference). Smooth scrolling, the pinned services section and the Shows photo parallax also run for everyone; only the hero video's scroll parallax respects it. Every piece of video has a still alternative.
+WCAG 2.2 AA. Flashing content must stay below seizure thresholds (no more than 3 flashes per second). All motion (the home intro, hero video, smooth scrolling, the pinned Services section, parallax and the partner marquee) plays for every visitor, including those with `prefers-reduced-motion` (a deliberate client decision, confirmed 2026-10-07). The hero video and the marquee have pause buttons (WCAG 2.2.2), and the intro opens the sky in about 2.5 s, with the headline landing right after. Every piece of video has a still alternative.

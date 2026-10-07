@@ -1,13 +1,25 @@
 // Placeholder media until Piromania supplies its own footage and photos.
 // Every entry records its source so it can be swapped or credited.
 
+// Hero montage: five stock clips cut together with ffmpeg, 13 s, looping,
+// 1080p from 1440p/4K sources. Pexels License: #34425749 fireworks display,
+// #38734188 wedding with spark fountains, #27806812 and #27806813 Correfoc
+// Badalona (ground fountains; red smoke and sparks), #33528725 fireworks over
+// a river city. Replace with an edit of Piromania's own shows; keep `cues` in
+// step with the cuts.
 export const heroMedia = {
-  // Mixkit "Fireworks in the sky" (#4151), Mixkit License
-  video: "https://assets.mixkit.co/videos/4151/4151-720.mp4",
-  poster: "https://assets.mixkit.co/videos/4151/4151-thumb-720-0.jpg",
-  width: 1280,
-  height: 720,
-}
+  video: "/videos/hero-1080.mp4", // 4.9 MB
+  videoSmall: "/videos/hero-540.mp4", // 1.9 MB, phones
+  poster: "/images/hero-poster.jpg", // first frame
+  /** Start time (s) of each cut and the label shown while it plays. */
+  cues: [
+    { at: 0, clip: "exterior" },
+    { at: 2.6, clip: "weddings" },
+    { at: 5.4, clip: "ground" },
+    { at: 8.0, clip: "cities" },
+    { at: 10.6, clip: "effects" },
+  ],
+} as const
 
 const unsplash = (id: string) => `https://images.unsplash.com/photo-${id}`
 
@@ -34,13 +46,12 @@ export const photos = {
     credit: "Jonathan Borba",
   },
   corporate: {
-    src: unsplash("1768396855390-0728fa9c21e1"),
-    credit: "Andy Wang",
+    // A stage under spark showers; no logos or readable text.
+    src: unsplash("1754492885592-34e5fe3f0093"),
+    credit: "Unsplash photo 7k9O6VV6_q8",
   },
   cities: {
     src: unsplash("1498931299472-f7a63a5a1cfa"),
     credit: "Ray Hennessy",
   },
 } as const
-
-export type PhotoKey = keyof typeof photos

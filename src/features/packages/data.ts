@@ -1,4 +1,4 @@
-import type { Locale } from "@/i18n/config"
+import { intlLocale, type Locale } from "@/i18n/config"
 
 // Prices and specs from piromania.ro/oferta-artificii. Confirm with the client
 // before launch. All prices exclude VAT and local council fees.
@@ -203,7 +203,7 @@ export const interiorPackages = [
 // Currency symbols are placed by hand: Node and browsers disagree on the
 // Romanian currency format ("770 EUR" vs "770 €"), which breaks hydration.
 const amount = (lang: Locale, value: number) =>
-  new Intl.NumberFormat(lang === "ro" ? "ro-RO" : "en-GB").format(value)
+  new Intl.NumberFormat(intlLocale[lang]).format(value)
 
 export function formatEur(lang: Locale, value: number) {
   return lang === "ro" ? `${amount(lang, value)} €` : `€${amount(lang, value)}`

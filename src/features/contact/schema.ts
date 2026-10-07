@@ -1,20 +1,18 @@
 import { z } from "zod"
 
-export const eventTypes = [
-  "wedding",
-  "baptism",
-  "birthday",
-  "corporate",
-  "city",
-  "other",
-] as const
-
-export type EventType = (typeof eventTypes)[number]
-
-// Error messages are codes; the form maps them to localized text.
-export type FieldErrorCode = "required" | "phone" | "email"
+import { eventTypes } from "./constants"
 
 const optionalText = (max: number) => z.string().trim().max(max).optional()
+
+// <input type="date"> sends YYYY-MM-DD. Today is allowed; a day already gone
+// is not (compared as strings, which sort like dates in this format).
+const today = () => new Date().toISOString().slice(0, 10)
+const eventDate = z
+  .union([
+    z.literal(""),
+    z.iso.date("date").refine((value) => value >= today(), "date"),
+  ])
+  .optional()
 
 export const quoteSchema = z.object({
   name: z.string().trim().min(1, "required").max(120),
@@ -25,7 +23,7 @@ export const quoteSchema = z.object({
     .regex(/^\+?[\d\s().-]{8,20}$/, "phone"),
   email: z.union([z.literal(""), z.email("email").max(200)]).optional(),
   eventType: z.enum(eventTypes, "required"),
-  date: optionalText(20),
+  date: eventDate,
   location: optionalText(120),
   message: optionalText(2000),
 })

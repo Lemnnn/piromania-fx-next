@@ -46,7 +46,6 @@
   height: 14px;
   align-items: center;
   justify-content: center;
-  will-change: transform;
 }
 
 .sm-icon-line {
@@ -129,7 +128,6 @@
 .sm-item-label {
   display: inline-block;
   transform-origin: 50% 100%;
-  will-change: transform;
 }
 
 .sm-footer {

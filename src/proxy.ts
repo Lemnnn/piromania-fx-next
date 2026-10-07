@@ -1,8 +1,17 @@
 import { NextResponse, type NextRequest } from "next/server"
 
-import { defaultLocale, hasLocale, locales, type Locale } from "@/i18n/config"
+import {
+  defaultLocale,
+  hasLocale,
+  localeCookie,
+  type Locale,
+} from "@/i18n/config"
 
 function getLocale(request: NextRequest): Locale {
+  // A language picked in the switcher wins over the browser's preference.
+  const saved = request.cookies.get(localeCookie)?.value
+  if (saved && hasLocale(saved)) return saved
+
   const header = request.headers.get("accept-language") ?? ""
   const preferred = header
     .split(",")
@@ -10,6 +19,8 @@ function getLocale(request: NextRequest): Locale {
       const [tag, q] = part.trim().split(";q=")
       return { lang: tag.split("-")[0].toLowerCase(), q: q ? Number(q) : 1 }
     })
+    // q=0 means "not acceptable".
+    .filter(({ q }) => q > 0)
     .sort((a, b) => b.q - a.q)
 
   const match = preferred.find(({ lang }) => hasLocale(lang))
@@ -18,13 +29,15 @@ function getLocale(request: NextRequest): Locale {
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-  )
+  const [, first = "", ...rest] = pathname.split("/")
 
-  if (pathnameHasLocale) return
+  if (hasLocale(first)) return
 
-  request.nextUrl.pathname = `/${getLocale(request)}${pathname}`
+  // /RO/packages -> /ro/packages, rather than /ro/RO/packages.
+  const lower = first.toLowerCase()
+  request.nextUrl.pathname = hasLocale(lower)
+    ? `/${[lower, ...rest].join("/")}`
+    : `/${getLocale(request)}${pathname}`
   return NextResponse.redirect(request.nextUrl)
 }
 

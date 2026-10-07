@@ -1,15 +1,11 @@
 "use client"
 
-import { useGSAP } from "@gsap/react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Image from "next/image"
 import { useRef } from "react"
 
 import type { Dictionary } from "@/i18n/get-dictionary"
+import { desktop, gsap, useGSAP } from "@/lib/gsap"
 import { photos } from "@/lib/media"
-
-gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 const order = ["exterior", "interior", "ground", "effects"] as const
 
@@ -21,7 +17,7 @@ export function Services({ dict }: { dict: Dictionary["services"] }) {
   useGSAP(
     () => {
       const mm = gsap.matchMedia()
-      mm.add("(min-width: 1024px)", () => {
+      mm.add(desktop, () => {
         const section = root.current!
         const track = section.querySelector<HTMLElement>("[data-track]")!
         const distance = () => track.scrollWidth - window.innerWidth
@@ -55,10 +51,7 @@ export function Services({ dict }: { dict: Dictionary["services"] }) {
         className="flex flex-col gap-20 px-4 py-24 md:px-8 lg:h-full lg:w-max lg:flex-row lg:gap-10 lg:pt-[104px] lg:pb-10"
       >
         <header className="flex flex-col justify-end gap-6 lg:w-[30vw] lg:shrink-0 lg:pb-2">
-          <h2
-            id="services-title"
-            className="font-display text-[clamp(4rem,9vw,9rem)] leading-[0.9] font-extrabold uppercase"
-          >
+          <h2 id="services-title" className="heading-section">
             {dict.title}
           </h2>
           <p className="max-w-[26ch] text-xl text-foreground/80">
@@ -79,8 +72,11 @@ export function Services({ dict }: { dict: Dictionary["services"] }) {
                   alt=""
                   fill
                   sizes="(min-width: 1024px) 60vw, 100vw"
-                  // Off-screen sideways in the pinned track; lazy loading pops in late.
+                  // Off-screen sideways in the pinned track, where lazy loading
+                  // pops in late; low priority so they don't compete with the
+                  // hero (LCP).
                   loading="eager"
+                  fetchPriority="low"
                   className="object-cover"
                 />
               </div>

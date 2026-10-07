@@ -1,6 +1,8 @@
 export const siteConfig = {
   name: "Piromania",
   company: "Piromania International SRL",
+  /** Canonical origin for metadata, sitemap and Open Graph URLs. */
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://piromania.ro",
   contact: {
     person: "Cristian Enciu",
     phone: "0722 380 636",
@@ -15,11 +17,11 @@ export const siteConfig = {
     { key: "packages", href: "/packages" },
   ],
   quoteHref: "#contact",
+  packagesHref: "/packages",
+  privacyHref: "/privacy",
 } as const
 
-export type NavKey = (typeof siteConfig.nav)[number]["key"]
-
 /** "/ro" + "#about" -> "/ro#about", "/ro" + "/packages" -> "/ro/packages". */
-export function localeHref(lang: string, href: string) {
+export function localeHref(lang: string, href = "") {
   return `/${lang}${href}`
 }

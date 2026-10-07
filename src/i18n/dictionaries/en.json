@@ -16,13 +16,23 @@
     "home": "Piromania home",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "contact": "Contact"
+    "contact": "Contact",
+    "skip": "Skip to content"
   },
   "hero": {
     "title": "Explosive fantasies",
     "pitch": "Pyrotechnic shows for weddings, corporate events and cities, created by a licensed team with over 19 years of experience.",
-    "packages": "See packages",
-    "videoLabel": "Golden fireworks in the night sky"
+    "videoLabel": "A montage of fireworks in the night sky",
+    "pauseVideo": "Pause video",
+    "playVideo": "Play video",
+    "tag": "Pyrotechnic shows",
+    "clips": {
+      "exterior": "Outdoor fireworks",
+      "weddings": "Weddings",
+      "ground": "Ground fireworks",
+      "cities": "Cities",
+      "effects": "Special effects"
+    }
   },
   "about": {
     "title": "About us",
@@ -118,6 +128,7 @@
       "eventType": "Type of event",
       "eventTypePlaceholder": "Choose",
       "date": "Event date",
+      "datePlaceholder": "Pick a date",
       "location": "Town or city",
       "message": "Event details"
     },
@@ -136,11 +147,16 @@
       "required": "Fill in this field.",
       "phone": "Enter a valid phone number.",
       "email": "Enter a valid email address.",
-      "server": "We couldn't send your request. Call us on 0722 380 636 or email office@piromania.ro."
-    }
+      "server": "We couldn't send your request. Call us on {phone} or email {email}.",
+      "date": "Choose a date in the future.",
+      "rateLimit": "You've already sent several requests. Try again in a few minutes or call us on {phone}."
+    },
+    "privacyNotice": "We only use your details to answer your request. See our {link}.",
+    "privacyLink": "privacy policy"
   },
   "footer": {
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "privacy": "Privacy policy"
   },
   "packagesPage": {
     "metaTitle": "Packages and prices | Piromania",
@@ -161,5 +177,50 @@
     "interior": "Indoor fireworks",
     "ctaTitle": "Not sure which package fits?",
     "ctaText": "Tell us about your event and we'll recommend the right show."
+  },
+  "privacy": {
+    "metaTitle": "Privacy policy | Piromania",
+    "metaDescription": "What the quote form collects, why, and how to exercise your rights.",
+    "title": "Privacy policy",
+    "draft": "Draft: this text must be reviewed by a lawyer before launch.",
+    "updated": "Last updated: October 2026",
+    "sections": [
+      {
+        "title": "Who we are",
+        "paragraphs": [
+          "Piromania International SRL is the controller of your data. You can reach us at office@piromania.ro or on 0722 380 636. [To complete: company ID (CUI), trade register number, registered address.]"
+        ]
+      },
+      {
+        "title": "What we collect",
+        "paragraphs": [
+          "Only what you send through the quote form: your name, phone, email (optional), the type, date and town of the event, and any details you add. We don't use analytics or advertising cookies. The only cookie we set remembers the language you picked."
+        ]
+      },
+      {
+        "title": "Why we use it",
+        "paragraphs": [
+          "To answer your request and send you a quote. The legal basis is taking steps at your request before entering into a contract (Article 6(1)(b) GDPR). We don't send newsletters and we never sell your data."
+        ]
+      },
+      {
+        "title": "Who can see it",
+        "paragraphs": [
+          "The Piromania team, and the providers that help us deliver your message: Resend (sending the email) and Vercel (hosting the site). They may process data outside the EU under the European Commission's standard contractual clauses."
+        ]
+      },
+      {
+        "title": "How long we keep it",
+        "paragraphs": [
+          "For as long as we discuss the quote and, if you become a client, for the contract and our legal obligations. Requests that don't lead to a contract are deleted after at most 12 months. [To confirm with the client.]"
+        ]
+      },
+      {
+        "title": "Your rights",
+        "paragraphs": [
+          "You can ask to access, correct or delete your data, restrict or object to its processing, and to receive it in a portable format. Email office@piromania.ro. You can also complain to the Romanian data protection authority (ANSPDCP), dataprotection.ro."
+        ]
+      }
+    ]
   }
 }
