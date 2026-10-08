@@ -8,7 +8,7 @@ import { Viewfinder } from "@/components/shared/viewfinder"
 import { buttonVariants } from "@/components/ui/button"
 import type { Locale } from "@/i18n/config"
 import type { Dictionary } from "@/i18n/get-dictionary"
-import { gsap, scrambleChars, useGSAP } from "@/lib/gsap"
+import { desktop, gsap, scrambleChars, useGSAP } from "@/lib/gsap"
 import { heroMedia } from "@/lib/media"
 import { localeHref, siteConfig } from "@/lib/site-config"
 import { SectionLink } from "@/lib/smooth-scroll"
@@ -137,15 +137,19 @@ export function Hero({ lang, dict, quoteLabel }: HeroProps) {
       const section = root.current!
       const q = gsap.utils.selector(section)
 
-      gsap.to(q("[data-media]"), {
-        yPercent: 14,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
+      // Desktop only: on phones, moving a full-screen video under the blended
+      // labels every scroll frame costs more than the depth is worth.
+      gsap.matchMedia().add(desktop, () => {
+        gsap.to(q("[data-media]"), {
+          yPercent: 14,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        })
       })
 
       const html = document.documentElement
@@ -401,7 +405,8 @@ export function Hero({ lang, dict, quoteLabel }: HeroProps) {
         data-intro-frame
         className="absolute inset-0 [transform:translateZ(0)] overflow-hidden"
       >
-        <div data-media className="absolute inset-x-0 -inset-y-[8%]">
+        {/* Oversized for the desktop parallax; phones have none. */}
+        <div data-media className="absolute inset-0 lg:-inset-y-[8%]">
           <Image
             src={heroMedia.poster}
             alt=""
@@ -420,15 +425,24 @@ export function Hero({ lang, dict, quoteLabel }: HeroProps) {
             preload="none"
             aria-label={dict.videoLabel}
           >
-            <source media="(max-width: 767px)" src={heroMedia.videoSmall} />
+            <source
+              media="(max-width: 767px) and (orientation: portrait)"
+              src={heroMedia.videoPortrait}
+            />
             <source src={heroMedia.video} />
           </video>
         </div>
-        {/* Shade only behind the headline; elsewhere the light text inverts
-            against the footage (mix-blend-difference) to stay readable. */}
+        {/* Shade behind the headline. On desktop the other light text inverts
+            against the footage (mix-blend-difference) to stay readable; on
+            phones re-blending over a playing video every frame is too costly,
+            so a light shade at the top keeps the header and readout legible. */}
         <div
           aria-hidden
           className="absolute inset-0 bg-linear-to-t from-background via-background/45 via-30% to-transparent to-65%"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-56 bg-linear-to-b from-background/60 to-transparent lg:hidden"
         />
       </div>
 
@@ -436,7 +450,8 @@ export function Hero({ lang, dict, quoteLabel }: HeroProps) {
       <Viewfinder
         data-marks
         data-intro-hide
-        className="absolute inset-x-4 top-[84px] bottom-4 z-10 md:inset-x-8 md:bottom-8"
+        blend={false}
+        className="absolute inset-x-4 top-[84px] bottom-4 z-10 md:inset-x-8 md:bottom-8 lg:mix-blend-difference"
       />
 
       <div
@@ -471,7 +486,7 @@ export function Hero({ lang, dict, quoteLabel }: HeroProps) {
       {/* Camera readout: the cut that is playing, a timecode, pause. */}
       <div
         data-intro-hide
-        className="absolute inset-x-0 top-[108px] z-10 flex items-start justify-between gap-4 px-8 mix-blend-difference md:top-[112px] md:px-14"
+        className="absolute inset-x-0 top-[108px] z-10 flex items-start justify-between gap-4 px-8 md:top-[112px] md:px-14 lg:mix-blend-difference"
       >
         <span
           data-reveal
@@ -527,13 +542,13 @@ export function Hero({ lang, dict, quoteLabel }: HeroProps) {
           <Tag
             data-reveal
             data-scramble
-            className="text-foreground/85 mix-blend-difference"
+            className="text-foreground/85 lg:mix-blend-difference"
           >
             {dict.tag}
           </Tag>
           <h1
             id="hero-title"
-            className="font-display text-[clamp(3.25rem,8vw,7.5rem)] leading-[0.86] font-extrabold tracking-[-0.01em] text-balance uppercase mix-blend-difference"
+            className="font-display text-[clamp(3.25rem,8vw,7.5rem)] leading-[0.86] font-extrabold tracking-[-0.01em] text-balance uppercase lg:mix-blend-difference"
           >
             {words.map((word, i) => (
               <Fragment key={i}>
@@ -551,7 +566,7 @@ export function Hero({ lang, dict, quoteLabel }: HeroProps) {
         <div className="flex max-w-[30rem] flex-col gap-5 lg:col-span-4 lg:col-start-9 lg:pb-1">
           <p
             data-reveal
-            className="hidden text-[0.9375rem] leading-relaxed text-pretty text-foreground/80 mix-blend-difference sm:block"
+            className="hidden text-[0.9375rem] leading-relaxed text-pretty text-foreground/80 sm:block lg:mix-blend-difference"
           >
             {dict.pitch}
           </p>

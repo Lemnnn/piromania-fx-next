@@ -63,6 +63,8 @@ export function SiteHeader({ lang, dict }: SiteHeaderProps) {
   // Two fixed layers that move together (see globals.css, "Site header"):
   // the logo and background below, and the links above, blended with
   // mix-blend-difference so they invert against bright footage like No Art's.
+  // Desktop only: on phones the blend over the hero video costs frames, and the
+  // hero shades its top edge instead.
   // A fixed element isolates its children, so the blend has to sit on a layer
   // of its own, and the orange logo stays out of it so it keeps its colours.
   return (
@@ -100,7 +102,7 @@ export function SiteHeader({ lang, dict }: SiteHeaderProps) {
       <div
         data-header-layer
         data-intro-hide
-        className="pointer-events-none fixed inset-x-0 top-0 z-30 h-[72px] mix-blend-difference"
+        className="pointer-events-none fixed inset-x-0 top-0 z-30 h-[72px] lg:mix-blend-difference"
       >
         <div className="container-page flex h-full items-center justify-between gap-6">
           {/* Keeps the logo's place (191×40 at h-10). */}

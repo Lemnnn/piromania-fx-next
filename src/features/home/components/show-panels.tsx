@@ -5,7 +5,7 @@ import { useRef } from "react"
 
 import { Tag } from "@/components/shared/tag"
 import { Viewfinder } from "@/components/shared/viewfinder"
-import { gsap, useGSAP } from "@/lib/gsap"
+import { desktop, gsap, useGSAP } from "@/lib/gsap"
 
 export type ShowPanel = {
   key: string
@@ -42,6 +42,7 @@ export function ShowPanels({
       const height = () => items[0].offsetHeight
       const at = (i: number, viewport: string) => () =>
         `top+=${i * height()} ${viewport}`
+      const mm = gsap.matchMedia()
 
       items.forEach((panel, i) => {
         const media = panel.querySelector("[data-panel-media]")
@@ -65,22 +66,25 @@ export function ShowPanels({
         }
 
         // From the moment the panel enters until it is covered (or, for the
-        // last one, scrolled away): two panel-heights of travel.
-        gsap.fromTo(
-          media,
-          { yPercent: -10 },
-          {
-            yPercent: 10,
-            ease: "none",
-            scrollTrigger: {
-              trigger: container,
-              start: at(i, "bottom"),
-              end: () => `+=${height() * 2}`,
-              scrub: true,
-              invalidateOnRefresh: true,
-            },
-          }
-        )
+        // last one, scrolled away): two panel-heights of travel. Desktop only:
+        // on phones it means four oversized full-screen layers in GPU memory.
+        mm.add(desktop, () => {
+          gsap.fromTo(
+            media,
+            { yPercent: -10 },
+            {
+              yPercent: 10,
+              ease: "none",
+              scrollTrigger: {
+                trigger: container,
+                start: at(i, "bottom"),
+                end: () => `+=${height() * 2}`,
+                scrub: true,
+                invalidateOnRefresh: true,
+              },
+            }
+          )
+        })
 
         // Plays once: hiding and replaying it on the way back up reads as a flicker.
         gsap.from(panel.querySelectorAll("[data-panel-reveal]"), {
@@ -116,10 +120,11 @@ export function ShowPanels({
             data-panel-inner
             className="absolute inset-0 overflow-hidden will-change-transform"
           >
-            {/* Oversized by 14% each way; the ±10% travel never shows an edge. */}
+            {/* Desktop: oversized by 14% each way; the ±10% travel never shows
+                an edge. Phones have no travel. */}
             <div
               data-panel-media
-              className="absolute inset-x-0 -inset-y-[14%] will-change-transform"
+              className="absolute inset-0 lg:-inset-y-[14%] lg:will-change-transform"
             >
               <Image
                 src={panel.src}

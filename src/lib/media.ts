@@ -9,7 +9,10 @@
 // step with the cuts.
 export const heroMedia = {
   video: "/videos/hero-1080.mp4", // 4.9 MB
-  videoSmall: "/videos/hero-540.mp4", // 1.9 MB, phones
+  // 3.3 MB, portrait phones: a centred 608×1080 crop of the 1080p cut, so the
+  // tall hero shows the footage at full resolution instead of a 540p strip
+  // stretched ~5×. ffmpeg -vf crop=608:1080 -crf 24 -preset slower.
+  videoPortrait: "/videos/hero-portrait.mp4",
   poster: "/images/hero-poster.jpg", // first frame
   /** Start time (s) of each cut and the label shown while it plays. */
   cues: [
