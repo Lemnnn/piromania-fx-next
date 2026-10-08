@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Big_Shoulders, Geist } from "next/font/google"
 import { notFound } from "next/navigation"
 
@@ -7,7 +7,7 @@ import { SiteFooter } from "@/components/layout/site-footer"
 import { SiteHeader } from "@/components/layout/site-header"
 import { hasLocale, locales } from "@/i18n/config"
 import { getDictionary } from "@/i18n/get-dictionary"
-import { pageMetadata } from "@/lib/metadata"
+import { pageMetadata, siteViewport } from "@/lib/metadata"
 import { siteConfig } from "@/lib/site-config"
 import { SmoothScroll } from "@/lib/smooth-scroll"
 import { cn } from "@/lib/utils"
@@ -24,6 +24,8 @@ const sans = Geist({ subsets: ["latin", "latin-ext"], variable: "--font-sans" })
 // navigation back to Home never sets it, so the intro is not repeated while
 // browsing, and a deep link to a section (/ro#contact) skips it.
 const introScript = `(function(){try{var d=document.documentElement;if(/^\\/(${locales.join("|")})?\\/?$/.test(location.pathname)&&!location.hash)d.dataset.intro="pending"}catch(e){}})()`
+
+export const viewport: Viewport = siteViewport
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }))

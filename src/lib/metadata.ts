@@ -1,7 +1,18 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 
 import { defaultLocale, intlLocale, locales, type Locale } from "@/i18n/config"
 import { localeHref, siteConfig } from "@/lib/site-config"
+
+/**
+ * The site is dark only (globals.css). Saying so in a meta tag, not just in
+ * CSS, stops phone browsers with a "dark mode for websites" setting (Samsung
+ * Internet, Chrome on Android) from re-colouring the page on their own. The
+ * theme colour tints the browser bar to match --background.
+ */
+export const siteViewport: Viewport = {
+  colorScheme: "dark",
+  themeColor: "#140808",
+}
 
 /**
  * Title, description, canonical URL, hreflang alternates and Open Graph for

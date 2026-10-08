@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Big_Shoulders, Geist } from "next/font/google"
 import Link from "next/link"
 
@@ -6,6 +6,7 @@ import "./globals.css"
 import { buttonVariants } from "@/components/ui/button"
 import { boundaryCopy } from "@/i18n/boundary-copy"
 import { defaultLocale, locales } from "@/i18n/config"
+import { siteViewport } from "@/lib/metadata"
 import { localeHref, siteConfig } from "@/lib/site-config"
 import { cn } from "@/lib/utils"
 
@@ -19,6 +20,8 @@ const display = Big_Shoulders({
 })
 
 const sans = Geist({ subsets: ["latin", "latin-ext"], variable: "--font-sans" })
+
+export const viewport: Viewport = siteViewport
 
 export const metadata: Metadata = {
   title: `404 | ${siteConfig.name}`,
